@@ -24,9 +24,7 @@
   left: 50px;
   top: 50px;
   z-index: 5;
-  transition: width 1s cubic-bezier(0.075, 0.82, 0.165, 1) 200ms;
-  transition: height 1s cubic-bezier(0.075, 0.82, 0.165, 1) 200ms;
-  transition: rotate 1s cubic-bezier(0.075, 0.82, 0.165, 1) 200ms;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1) 200ms;
 }
 
 .box-kontaner :nth-child(3) {
@@ -34,13 +32,60 @@
   height: 200px;
   background-color: blue;
   position: absolute;
-  left: 150px;
-  top: 150px;
+  left: 100px;
+  top: 100px;
   z-index: 2;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1) 200ms;
 }
+
+/* для
+  зелёного квадрата изменяем размер и делаем поворот
+  при наведении курсора */
 
 .box-kontaner :nth-child(2):hover {
   width: 300px;
   height: 300px;
   transform: rotate(-45deg);
+}
+
+/* для
+  синего квадрата делаем поворот и тень
+  при наведении курсора */
+
+.box-kontaner :nth-child(3):hover {
+  transform: rotate(360deg);
+  box-shadow: 5px 5px 10px 10px gray;
+}
+/* оформляем картинку */
+.pictur {
+  width: 300px;
+  height: 200px;
+  margin-top: 150px;
+  margin-left: 150px;
+  position: relative;
+}
+
+.pictur > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* создаём псевдоэлемент в виде кружка, позиционируем и скрываем его */
+.pictur::after {
+  content: "";
+  width: 1px;
+  height: 1px;
+  background-color: yellow;
+  border-radius: 50%;
+  opacity: 0;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  transition: all 1s;
+}
+/* делаем при наведении псевдоэлемент видимым и увеличиваем его */
+.pictur:hover::after {
+  opacity: 1;
+  transform: scale(20);
 }
